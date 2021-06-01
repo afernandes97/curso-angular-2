@@ -7,6 +7,8 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
 
+import {URL_API} from '../app/app.api';
+
 //importando operador para utilizar o toPromise
 //import 'rxjs/add/operator/toPromise';
 
@@ -24,7 +26,7 @@ export class OfertasService {
     //array que ficaram as ofertas recebidas da api
     public getOfertas(): Promise<Oferta[]>{
         //efetuar uma requisicao http e retornar uma promise de um array de ofertas
-        return this.http.get('http://localhost:3000/ofertas')
+        return this.http.get(`${URL_API}?destaque=true`)
             //transformando observable em promise
             .toPromise()
             //recuperando a resposta com o observable convertido para promise
@@ -33,7 +35,7 @@ export class OfertasService {
 
     //recebendo os dados filtrando por categoria
     public getOfertasPorCategoria(categoria: string): Promise<Oferta[]>{
-        return this.http.get(`http://localhost:3000/ofertas?categoria=${categoria}`)
+        return this.http.get(`${URL_API}?categoria=${categoria}`)
             //convertendo para promise
             .toPromise()
             .then((resposta: any) => resposta)
@@ -42,7 +44,7 @@ export class OfertasService {
 
     //criando filtro por id recebido atraves do snapshot contendo o id da pagina ativa no momento
     public getOfertaPorId(id: number): Promise<Oferta>{
-        return this.http.get(`http://localhost:3000/ofertas?id=${id}`)
+        return this.http.get(`${URL_API}?id=${id}`)
             .toPromise()
             //recebendo a resposta e pegando o valor contido dentor do array com indice 0 - no caso o proprio objeto
             .then((resposta: any) => {
