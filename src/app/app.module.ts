@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DiversaoComponent } from './diversao/diversao.component';
 import { RestaurantesComponent } from './restaurantes/restaurantes.component';
 import { OfertaComponent } from './oferta/oferta.component';
+import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { OfertaComponent } from './oferta/oferta.component';
     RodapeComponent,
     DiversaoComponent,
     RestaurantesComponent,
-    OfertaComponent
+    OfertaComponent,
+    ComoUsarComponent
   ],
   imports: [
     BrowserModule,
