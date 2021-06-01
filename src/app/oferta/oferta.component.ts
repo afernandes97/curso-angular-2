@@ -44,7 +44,6 @@ export class OfertaComponent implements OnInit {
       //tratando a resposta e recendo dentro de uma variavel com o modelo e colocando dentro da variavel que recebera a promisse
       .then((oferta: Oferta)=>{
         this.oferta = oferta
-        console.log(this.oferta)
       })
   }
 

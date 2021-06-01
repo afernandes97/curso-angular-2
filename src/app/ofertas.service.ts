@@ -26,7 +26,7 @@ export class OfertasService {
     //array que ficaram as ofertas recebidas da api
     public getOfertas(): Promise<Oferta[]>{
         //efetuar uma requisicao http e retornar uma promise de um array de ofertas
-        return this.http.get(`${URL_API}?destaque=true`)
+        return this.http.get(`${URL_API}/ofertas?destaque=true`)
             //transformando observable em promise
             .toPromise()
             //recuperando a resposta com o observable convertido para promise
@@ -35,7 +35,7 @@ export class OfertasService {
 
     //recebendo os dados filtrando por categoria
     public getOfertasPorCategoria(categoria: string): Promise<Oferta[]>{
-        return this.http.get(`${URL_API}?categoria=${categoria}`)
+        return this.http.get(`${URL_API}/ofertas?categoria=${categoria}`)
             //convertendo para promise
             .toPromise()
             .then((resposta: any) => resposta)
@@ -44,11 +44,20 @@ export class OfertasService {
 
     //criando filtro por id recebido atraves do snapshot contendo o id da pagina ativa no momento
     public getOfertaPorId(id: number): Promise<Oferta>{
-        return this.http.get(`${URL_API}?id=${id}`)
+        return this.http.get(`${URL_API}/ofertas?id=${id}`)
             .toPromise()
             //recebendo a resposta e pegando o valor contido dentor do array com indice 0 - no caso o proprio objeto
             .then((resposta: any) => {
                 return resposta[0]                
+            })
+    }
+
+    public getComoUsarOfertaPorId(id: number): Promise<string>{
+        return this.http.get(`${URL_API}/como-usar?id=${id}`)
+            .toPromise()
+            .then((resposta: any) => {
+                console.log(resposta)
+                return resposta
             })
     }
 }
