@@ -24,7 +24,7 @@ export class OfertasService {
     //array que ficaram as ofertas recebidas da api
     public getOfertas(): Promise<Oferta[]>{
         //efetuar uma requisicao http e retornar uma promise de um array de ofertas
-        return this.http.get('http://localhost:3000/ofertas?destaque=true')
+        return this.http.get('http://localhost:3000/ofertas')
             //transformando observable em promise
             .toPromise()
             //recuperando a resposta com o observable convertido para promise
