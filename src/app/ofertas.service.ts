@@ -31,11 +31,23 @@ export class OfertasService {
             .then((resposta:any) => resposta)
     }
 
-    //
+    //recebendo os dados filtrando por categoria
     public getOfertasPorCategoria(categoria: string): Promise<Oferta[]>{
         return this.http.get(`http://localhost:3000/ofertas?categoria=${categoria}`)
+            //convertendo para promise
             .toPromise()
             .then((resposta: any) => resposta)
+    }
+
+
+    //criando filtro por id recebido atraves do snapshot contendo o id da pagina ativa no momento
+    public getOfertaPorId(id: number): Promise<Oferta>{
+        return this.http.get(`http://localhost:3000/ofertas?id=${id}`)
+            .toPromise()
+            //recebendo a resposta e pegando o valor contido dentor do array com indice 0 - no caso o proprio objeto
+            .then((resposta: any) => {
+                return resposta[0]                
+            })
     }
 }
 
