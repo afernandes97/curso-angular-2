@@ -1,67 +1,53 @@
 import {Oferta} from './shared/oferta.model';
 
+//chamando o httpmodule para requisicoes http
+import {HttpClient} from '@angular/common/http';
+
+
+import {Injectable} from '@angular/core';
+
+
+//importando operador para utilizar o toPromise
+//import 'rxjs/add/operator/toPromise';
+
+
+//Decorator que marca uma classe como disponível para ser fornecida e injetada como uma dependência.
+@Injectable()
 export class OfertasService {
 
-    //ofertas
-    public ofertas: Array<Oferta> = [
+    //instanciando o httpclient no contrutor
+    constructor(private http: HttpClient){
         
-            {
-                id: 1,
-                categoria: "restaurante",
-                titulo: "Super Burger",
-                descricao_oferta: "Rodízio de Mini-hambúrger com opção de entrada.",
-                anunciante: "Original Burger",
-                valor: 29.90,
-                destaque: true,
-                imagens: [
-                    {url: "/assets/ofertas/1/img1.jpg"},
-                    {url: "/assets/ofertas/1/img2.jpg"},
-                    {url: "/assets/ofertas/1/img3.jpg"},
-                    {url: "/assets/ofertas/1/img4.jpg"}
-                ]
-            },
-            {
-                id: 2,
-                categoria: "restaurante",
-                titulo: "Cozinha Mexicana",
-                descricao_oferta: "Almoço ou Jantar com Rodízio Mexicano delicioso.",
-                anunciante: "Mexicana",
-                valor: 32.90,
-                destaque: true,
-                imagens: [
-                    {url: "/assets/ofertas/2/img1.jpg"},
-                    {url: "/assets/ofertas/2/img2.jpg"},
-                    {url: "/assets/ofertas/2/img3.jpg"},
-                    {url: "/assets/ofertas/2/img4.jpg"}
-                ]
-            
-            },
-            {
-                id: 4,
-                categoria: "diversao",
-                titulo: "Estância das águas",
-                descricao_oferta: "Diversão garantida com piscinas, trilhas e muito mais.",
-                anunciante: "Estância das águas",
-                valor: 31.90,
-                destaque: true,
-                imagens: [
-                    {url: "/assets/ofertas/3/img1.jpg"},
-                    {url: "/assets/ofertas/3/img2.jpg"},
-                    {url: "/assets/ofertas/3/img3.jpg"},
-                    {url: "/assets/ofertas/3/img4.jpg"},
-                    {url: "/assets/ofertas/3/img5.jpg"},
-                    {url: "/assets/ofertas/3/img6.jpg"}
-                ]
-            }
-        ]
-    
+    }
+   
 
     //array que ficaram as ofertas recebidas da api
-    public getOfertas(): Array<Oferta>{
-        return this.ofertas;
+    public getOfertas(): Promise<Oferta[]>{
+        //efetuar uma requisicao http e retornar uma promise de um array de ofertas
+        return this.http.get('http://localhost:3000/ofertas?destaque=true')
+            //transformando observable em promise
+            .toPromise()
+            //recuperando a resposta com o observable convertido para promise
+            .then((resposta:any) => resposta)
     }
 
+    //
+    public getOfertasPorCategoria(categoria: string): Promise<Oferta[]>{
+        return this.http.get(`http://localhost:3000/ofertas?categoria=${categoria}`)
+            .toPromise()
+            .then((resposta: any) => resposta)
+    }
+}
 
+
+
+
+
+
+
+
+
+/*
     public getOfertas2(): Promise<Oferta[]> {
         //instanciando objeto promise
         return new Promise((resolve, reject) =>{
@@ -91,5 +77,4 @@ export class OfertasService {
             return ofertas
         })
     
-    } 
-}
+    } */

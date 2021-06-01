@@ -7,16 +7,32 @@ import { TopoComponent } from './topo/topo.component';
 import { HomeComponent } from './home/home.component';
 import { RodapeComponent } from './rodape/rodape.component';
 
+
+//importando rotas
+import { RouterModule } from '@angular/router';
+
+//rotas
+import { ROUTES } from './app.routes'
+//importando httpmodule para fazer requisicoes http
+import { HttpClientModule } from '@angular/common/http';
+import { DiversaoComponent } from './diversao/diversao.component';
+import { RestaurantesComponent } from './restaurantes/restaurantes.component';
 @NgModule({
   declarations: [
     AppComponent,
     TopoComponent,
     HomeComponent,
-    RodapeComponent
+    RodapeComponent,
+    DiversaoComponent,
+    RestaurantesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    //importando httpmodule
+    HttpClientModule,
+    //router com mapeamento global da aplicacao
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -24,20 +24,17 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     //acessando o service ofertasservice
     //this.ofertas = this.ofertasServices.getOfertas();
-    console.log(this.ofertas);
+    //console.log(this.ofertas);
 
     //aqui estamos utilizando o conceito de tranmissao de dados assincrona
     //onde o then é o resultado de uma respota positiva
     //e o catch faz a trativa do erro
-    this.ofertasServices.getOfertas2()
-      .then(
-        (ofertas: Oferta[])=>{
-        this.ofertas = ofertas
-      })
+    this.ofertasServices.getOfertas()
+      .then((ofertas: Oferta[]) => { this.ofertas = ofertas })
       //tratativa de erro, funcao q sera tratada no reject da promisse
       .catch(
         (param: any) => console.log(param)
-      );
+      )
   }
 
 }
