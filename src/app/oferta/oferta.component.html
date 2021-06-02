@@ -3,10 +3,10 @@
     <div class="oferta" *ngIf="oferta !== undefined">
       <div class="row">
         <div class="col">
-          <h4>{{oferta.descricao_oferta}}</h4>
+          <h4><b>{{oferta.descricao_oferta}}</b></h4>
         </div>
       </div>
-  
+  <br>
       <div class="row">
         <div class="col-md-6">
           <div class="img_capa">
@@ -14,7 +14,7 @@
           </div>
   
           <div class="thumbnails">
-            <img *ngFor="let imagem of oferta.imagens" [src]="imagem.url" />            
+            <img *ngFor="let imagem of oferta.imagens" class="rounded " [src]="imagem.url" />            
           </div>
         </div>
   

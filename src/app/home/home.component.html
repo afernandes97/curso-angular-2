@@ -1,18 +1,24 @@
 <div class="container" style="padding-top: 60px;">
-  
+
+  <div class="banner_home">
+    <img class="img-fluid mx-auto d-block" style="width: 40%;"
+      src="https://www.clipartmax.com/png/small/290-2903927_online-shopping-flat-design-online-shopping-flat-design.png"
+      alt="Online Shopping Flat Design - Online Shopping Flat Design @clipartmax.com">
+    <h1 class="display-3 text-center">Bem Vindos</h1>
+    <p class="h4 text-center">A sua mais nova maneira de comprar online.</p>
+    <hr>
+  </div>
   <div class="secao">
     <h3 class="text-center">Destaques do dia!</h3>
     <h5 class="text-center">Aproveite as super ofertas que separamos para você:</h5>
   </div>
 
-  <hr />
-
   <div class="row">
     <div class="col-sm-4" *ngFor="let oferta of ofertas">
-      <div class="card" >
+      <div class="card">
         <img [src]="oferta.imagens[0].url" class="card-img-top" alt="...">
-        <div class="card-body " >
-          <h5 class="card-title">{{oferta.titulo}}</h5>
+        <div class="card-body ">
+          <h5 class="card-title"><b>{{oferta.titulo}}</b></h5>
           <p class="card-text">{{oferta.descricao_oferta}}</p>
           <p><b>R${{oferta.valor}}</b></p>
           <a [routerLink]="['/oferta', oferta.id]" class="btn btn-outline-primary">Ver oferta</a>

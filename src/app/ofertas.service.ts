@@ -1,7 +1,7 @@
 import {Oferta} from './shared/oferta.model';
 
 //chamando o httpmodule para requisicoes http
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 
 
 import {Injectable} from '@angular/core';
@@ -77,6 +77,10 @@ export class OfertasService {
     }
 
     //criando pesquisa ofertas
+    //observable - Por definição é uma coleção que funciona de forma unidirecional, ou seja, ele emite notificações 
+    //sempre que ocorre uma mudança em um de seus itens e a partir disto podemos executar uma ação.
+    //imagine o observable como um objeto e o map vai atuar sobre o valor dele mesmo modificando para alguma 
+    //coisa, de acordo com a necessidade
     public pesquisaOfertas(termo: string): Observable<Oferta[]>{
         //verificando via http a descricao_oferta - recebendo o termo enviado pelo user
         return this.http.get<Oferta[]>(`${URL_API}/ofertas?descricao_oferta_like=${termo}`)
