@@ -25,7 +25,6 @@ export class ComoUsarComponent implements OnInit {
       .then((resposta: any) => {
         //retornando a resposta para o objeto e poder fazer um databinding no front end
         this.comoUsar = resposta.descricao;
-        console.log('aqui esta o array com descricao: ', this.comoUsar)
       })
   }
 

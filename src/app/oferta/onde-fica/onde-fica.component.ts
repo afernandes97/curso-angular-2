@@ -20,7 +20,6 @@ export class OndeFicaComponent implements OnInit {
      this.ofertasService.getOndeFicaPorId(this.route.parent?.snapshot.params['id'])
       .then((resposta: any) => {
         this.ondeFica = resposta.descricao;
-        console.log(this.ondeFica)
       })
   }
 

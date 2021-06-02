@@ -3,6 +3,13 @@ import { Component, OnInit } from '@angular/core';
 //interface
 import { ActivatedRoute } from '@angular/router';
 
+//subscribe rxjs
+import { Subscription } from 'rxjs';
+
+//observable do rxjs
+import { observable } from 'rxjs';
+//importando operadores do observable
+import { interval } from 'rxjs';
 //importando serviceOferta
 import { OfertasService } from '../ofertas.service';
 //modelo de oferta
@@ -22,6 +29,9 @@ export class OfertaComponent implements OnInit {
   public oferta!: Oferta
   //
   private route!: ActivatedRoute;
+
+  private tempoObservableSubscrition!: Subscription
+  private meuObservableTesteSubscrition!: Subscription
 
   //instanciando no construtor o route para fazermos um snapshot da rota ativa no momento
   //instanciando no construtor o ofertasService
@@ -45,6 +55,14 @@ export class OfertaComponent implements OnInit {
       .then((oferta: Oferta)=>{
         this.oferta = oferta
       })
+
+      let tempo = interval(5000)
+
+      this.tempoObservableSubscrition = tempo.subscribe((intervalo: number) => {
+        console.log(intervalo) 
+    })
+      
+      
   }
 
 }
