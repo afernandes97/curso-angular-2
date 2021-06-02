@@ -8,6 +8,7 @@ import {Injectable} from '@angular/core';
 
 
 import {URL_API} from '../app/app.api';
+import { Observable } from 'rxjs';
 
 //importando operador para utilizar o toPromise
 //import 'rxjs/add/operator/toPromise';
@@ -71,6 +72,13 @@ export class OfertasService {
             .then((resposta:any) => {
                 return resposta[0]
             })
+    }
+
+    //criando pesquisa ofertas
+    public pesquisaOfertas(termo: string): Observable<Oferta[]>{
+        //verificando via http a descricao_oferta - recebendo o termo enviado pelo user
+        return this.http.get<Oferta[]>(`${URL_API}/ofertas?descricao_oferta=${termo}`)
+        .pipe()
     }
 }
 

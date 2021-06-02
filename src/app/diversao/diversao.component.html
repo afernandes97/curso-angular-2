@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="padding-top:60px">
   
   <div class="secao">
     <h3 class="text-center">Cinema, viagens, diversão muito e mais!</h3>
@@ -7,8 +7,9 @@
 
   <hr />
 
+ 
   <div class="row" *ngFor="let oferta of ofertas" style="padding-bottom: 15px;">
-    <div class="col-md-4">
+    <div class="col-md-4" >
       <img [src]="oferta.imagens[0].url" class="img-fluid" />
     </div>
 
@@ -29,8 +30,10 @@
         <p>R${{oferta.valor}}</p>
       </div>
 
-      <div class="row">
-        <button class="btn btn-outline-success" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
+      <div class="row ">
+        <div class="col-12 ">
+          <button type="button" class="btn btn-primary" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
+        </div>
       </div>
     </div>
   </div>

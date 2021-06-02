@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 //interface
 import { ActivatedRoute } from '@angular/router';
 
-//subscribe rxjs
-import { Subscription } from 'rxjs';
 
-//observable do rxjs
-import { observable } from 'rxjs';
-//importando operadores do observable
-import { interval } from 'rxjs';
 //importando serviceOferta
 import { OfertasService } from '../ofertas.service';
 //modelo de oferta
@@ -22,16 +16,13 @@ import { Oferta } from '../shared/oferta.model';
   //instanciando o provider do servico
   providers: [OfertasService]
 })
-export class OfertaComponent implements OnInit {
+export class OfertaComponent implements OnInit, OnDestroy {
 
 
   //variavel que recebera a resolucao da promisse
   public oferta!: Oferta
   //
   private route!: ActivatedRoute;
-
-  private tempoObservableSubscrition!: Subscription
-  private meuObservableTesteSubscrition!: Subscription
 
   //instanciando no construtor o route para fazermos um snapshot da rota ativa no momento
   //instanciando no construtor o ofertasService
@@ -56,13 +47,12 @@ export class OfertaComponent implements OnInit {
         this.oferta = oferta
       })
 
-      let tempo = interval(5000)
+     
+   
+  }
 
-      this.tempoObservableSubscrition = tempo.subscribe((intervalo: number) => {
-        console.log(intervalo) 
-    })
-      
-      
+  ngOnDestroy(){
+
   }
 
 }

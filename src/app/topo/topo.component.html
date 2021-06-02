@@ -1,8 +1,14 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" style="background-color: #e3f2fd;">
   <div class="container-fluid">
     <a routerLink="/" class="navbar-brand">
       <img src="/assets/ico/favicon-32x32.png" />
     </a>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search"
+      #termoDaBusca
+      (keyup)="pesquisa(termoDaBusca.value)"
+      />
+    </form>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,14 +24,8 @@
           <a class="nav-link" routerLinkActive="active" routerLink="/diversao">Diversão</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-      </form>
+
     </div>
     
   </div>
 </nav>
-<div class="banner">
-  <img src="/assets/banners/img_1.jpg" />
-</div>

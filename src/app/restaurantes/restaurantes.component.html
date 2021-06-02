@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="padding-top:60px">
   
   <div class="secao">
     <h3 class="text-center">Rodízios, Buffet, Carnes Especiais, Feijoada e mais!</h3>
@@ -29,10 +29,17 @@
         <p>R${{oferta.valor}}</p>
       </div>
 
-      <div class="row">
-        <button class="btn btn-outline-success" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
+      <div class="row ">
+        <div class="col-12 ">
+          <button type="button" class="btn btn-primary" [routerLink]="['/oferta', oferta.id]">Ver oferta</button>
+        </div>
       </div>
     </div>
   </div>
-
 </div>
+
+
+
+
+
+

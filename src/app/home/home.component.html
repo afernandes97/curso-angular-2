@@ -9,15 +9,16 @@
 
   <div class="row">
     <div class="col-sm-4" *ngFor="let oferta of ofertas">
-      <div class="card" style="margin-bottom: 50px;">
-        <img class="card-img-top" [src]="oferta.imagens[0].url" class="img-fluid" />
-        <div class="card-block">
-          <h4 class="card-title">{{oferta.titulo}}</h4>
+      <div class="card" >
+        <img [src]="oferta.imagens[0].url" class="card-img-top" alt="...">
+        <div class="card-body " >
+          <h5 class="card-title">{{oferta.titulo}}</h5>
           <p class="card-text">{{oferta.descricao_oferta}}</p>
-          <p class="preco">R${{oferta.valor}}</p>
+          <p><b>R${{oferta.valor}}</b></p>
           <a [routerLink]="['/oferta', oferta.id]" class="btn btn-outline-primary">Ver oferta</a>
         </div>
       </div>
     </div>
   </div>
+
 </div>
