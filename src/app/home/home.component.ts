@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     //e o catch faz a trativa do erro
     this.ofertasServices.getOfertas()
       .then((ofertas: Oferta[]) => { this.ofertas = ofertas 
-      console.log('ofertas:',ofertas)
+      //console.log('ofertas:',ofertas)
       })
       //tratativa de erro, funcao q sera tratada no reject da promisse
       .catch(

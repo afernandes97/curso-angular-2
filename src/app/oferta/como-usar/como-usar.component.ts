@@ -14,14 +14,18 @@ import { OfertasService } from '../../ofertas.service';
 })
 export class ComoUsarComponent implements OnInit {
 
+  public comoUsar!: []
+
   constructor(private route: ActivatedRoute, private ofertasService: OfertasService) { }
 
   
   ngOnInit(): void {
-    //recebendo snapshot da rota parant(pai)
+    //recebendo snapshot da rota parant(pai) e devolvendo a resposta
     this.ofertasService.getComoUsarOfertaPorId(this.route.parent?.snapshot.params['id'])
       .then((resposta: any) => {
-        console.log(resposta)
+        //retornando a resposta para o objeto e poder fazer um databinding no front end
+        this.comoUsar = resposta.descricao;
+        console.log('aqui esta o array com descricao: ', this.comoUsar)
       })
   }
 

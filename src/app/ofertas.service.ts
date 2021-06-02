@@ -53,11 +53,23 @@ export class OfertasService {
     }
 
     public getComoUsarOfertaPorId(id: number): Promise<string>{
+        //pegando via metodo http get e utilizando a url dentro de url_api com a base
+        //e buscando como-usar atravez de um id recebido via snapshop no component que ira utilizar
         return this.http.get(`${URL_API}/como-usar?id=${id}`)
             .toPromise()
             .then((resposta: any) => {
-                console.log(resposta)
-                return resposta
+                //console.log(resposta)
+                return resposta[0]
+            })
+    }
+
+    public getOndeFicaPorId(id:number): Promise<string>{
+        //pegando via metodo http get e utilizando a url dentro de url_api com a base
+        //e buscando como-usar atravez de um id recebido via snapshop no component que ira utilizar
+        return this.http.get(`${URL_API}/onde-fica?id=${id}`)
+            .toPromise()
+            .then((resposta:any) => {
+                return resposta[0]
             })
     }
 }
