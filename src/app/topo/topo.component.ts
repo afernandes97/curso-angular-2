@@ -25,15 +25,18 @@ export class TopoComponent implements OnInit {
   //subjectPesquisa
   private subjectPesquisa: Subject<string> = new Subject<string>()
 
+  //atributo que guardara o array de ofertas
+  public ofertasPesquisa!: Oferta[];
+
 
   constructor(private ofertasService: OfertasService) { }
 
   ngOnInit(): void {
     this.ofertas = this.subjectPesquisa
       //entrega a requisicao apos 2segundos, tempo para usuario digitar a pesquisa
-      .pipe(debounceTime(900))
+      .pipe(debounceTime(200))
       //verificando se o conteudo digitado nao foi usado anteriormente, caso tenha sido nao faz uma nova requisao
-      .pipe(distinctUntilChanged())
+      .pipe(distinctUntilChanged())//faz pesquisas distintas
       .pipe(switchMap((termo: string) => {
         console.log('requisicao http para a api')
         //caso o conteudo seja vazio, ele trara o array de ofertas vazio
@@ -52,7 +55,7 @@ export class TopoComponent implements OnInit {
       }))
       //indicando como sera tratado o retorno produzido pelo evento
       this.ofertas.subscribe((ofertas: Oferta[])=> {
-        console.log(ofertas)
+        this.ofertasPesquisa = ofertas;
       })
   }
 
