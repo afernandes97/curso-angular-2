@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,11 @@ import { TopoComponent } from './topo/topo.component';
 import { HomeComponent } from './home/home.component';
 import { RodapeComponent } from './rodape/rodape.component';
 
+//pipes
+import localept from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+registerLocaleData(localept, 'pt');
+import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
 
 //importando rotas
 import { RouterModule } from '@angular/router';
@@ -20,6 +25,8 @@ import { RestaurantesComponent } from './restaurantes/restaurantes.component';
 import { OfertaComponent } from './oferta/oferta.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
+import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +37,9 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
     RestaurantesComponent,
     OfertaComponent,
     ComoUsarComponent,
-    OndeFicaComponent
+    OndeFicaComponent,
+    DescricaoReduzida,
+    OrdemCompraComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +49,7 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
     //router com mapeamento global da aplicacao
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

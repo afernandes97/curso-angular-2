@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 //interface
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 
 //importando serviceOferta
@@ -31,8 +31,15 @@ export class OfertaComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit(): void {
-    //recebendo o snapshot utilizando os parametros para indicar o que buscar
-    this.route.snapshot.params['id'];
+   
+    this.route.params.subscribe((parametros: Params)=>{
+      //recuperando a oferta com base no id que estamos recuperando da rota atraves do recurso de snapshot
+      this.ofertasService.getOfertaPorId(parametros.id)
+      //tratando a resposta e recendo dentro de uma variavel com o modelo e colocando dentro da variavel que recebera a promisse
+      .then((oferta: Oferta)=>{
+        this.oferta = oferta
+      })
+    })
 
     //subscrie - capas de emitir um callback e fica identificando alteracoes
     //definindo uma acao para dizer o que fazer
@@ -40,12 +47,7 @@ export class OfertaComponent implements OnInit, OnDestroy {
       console.log(parametro)
     })*/
 
-    //recuperando a oferta com base no id que estamos recuperando da rota atraves do recurso de snapshot
-    this.ofertasService.getOfertaPorId(this.route.snapshot.params['id'])
-      //tratando a resposta e recendo dentro de uma variavel com o modelo e colocando dentro da variavel que recebera a promisse
-      .then((oferta: Oferta)=>{
-        this.oferta = oferta
-      })
+
 
      
    

@@ -22,11 +22,11 @@ export class TopoComponent implements OnInit {
   //sera responsavel por guardar o termodabusca recebido do input
   public ofertas!: Observable<Oferta[]>
 
-  //subjectPesquisa
+  //subjectPesquisa dispara oservables na string de eventos
   private subjectPesquisa: Subject<string> = new Subject<string>()
 
   //atributo que guardara o array de ofertas
-  public ofertasPesquisa!: Oferta[];
+ 
 
 
   constructor(private ofertasService: OfertasService) { }
@@ -53,11 +53,10 @@ export class TopoComponent implements OnInit {
         return of<Oferta[]>([])
       
       }))
-      //indicando como sera tratado o retorno produzido pelo evento
-      this.ofertas.subscribe((ofertas: Oferta[])=> {
-        this.ofertasPesquisa = ofertas;
-      })
+      
   }
+
+  
 
 
   //recuperando evento de keyup no input> recebendo esse evento
@@ -69,7 +68,7 @@ export class TopoComponent implements OnInit {
 
 
 
-
+    
     /* versao anterior
     -----------------------------------
      //recebendo o conteudo do termobusca usando o metodo pesquisaofertas(ofertas.service.ts)
@@ -90,5 +89,9 @@ export class TopoComponent implements OnInit {
     */
   }
 
+
+  limpaPesquisa(): void{
+    this.subjectPesquisa.next('')
+  }
  
 }

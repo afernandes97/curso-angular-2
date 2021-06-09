@@ -16,11 +16,16 @@ export class OndeFicaComponent implements OnInit {
   constructor(private route: ActivatedRoute, private ofertasService: OfertasService) { }
 
   ngOnInit(): void {
-     //recebendo snapshot da rota parant(pai)
-     this.ofertasService.getOndeFicaPorId(this.route.parent?.snapshot.params['id'])
-      .then((resposta: any) => {
-        this.ondeFica = resposta.descricao;
-      })
+
+
+      this.route.parent?.params.subscribe((parametros: any)=>{
+        //recebendo snapshot da rota parant(pai) e devolvendo a resposta
+        this.ofertasService.getOndeFicaPorId(parametros.id)
+          .then((resposta: any) => {
+            //retornando a resposta para o objeto e poder fazer um databinding no front end
+            this.ondeFica = resposta.descricao;
+          })
+        })
   }
 
 }

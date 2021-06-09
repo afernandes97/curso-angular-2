@@ -14,13 +14,13 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-4" *ngFor="let oferta of ofertas">
-      <div class="card">
+    <div class="col-sm-4" *ngFor="let oferta of ofertas" style="padding-bottom: 40px;">
+      <div class="card" >
         <img [src]="oferta.imagens[0].url" class="card-img-top" alt="...">
         <div class="card-body ">
           <h5 class="card-title"><b>{{oferta.titulo}}</b></h5>
           <p class="card-text">{{oferta.descricao_oferta}}</p>
-          <p><b>R${{oferta.valor}}</b></p>
+          <p><b>{{oferta.valor | currency: 'BRL'}}</b></p>
           <a [routerLink]="['/oferta', oferta.id]" class="btn btn-outline-primary">Ver oferta</a>
         </div>
       </div>

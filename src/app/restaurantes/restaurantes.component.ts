@@ -15,6 +15,7 @@ import { OfertasService } from '../ofertas.service';
 })
 export class RestaurantesComponent implements OnInit {
 
+
   //atribuindo a ofertas e recebendo o OfertasService
   constructor(public ofertasService: OfertasService) { }
   public ofertas!: Oferta[];

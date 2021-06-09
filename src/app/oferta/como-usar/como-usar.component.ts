@@ -20,12 +20,16 @@ export class ComoUsarComponent implements OnInit {
 
   
   ngOnInit(): void {
+
+    this.route.parent?.params.subscribe((parametros: any)=>{
     //recebendo snapshot da rota parant(pai) e devolvendo a resposta
-    this.ofertasService.getComoUsarOfertaPorId(this.route.parent?.snapshot.params['id'])
+    this.ofertasService.getComoUsarOfertaPorId(parametros.id)
       .then((resposta: any) => {
         //retornando a resposta para o objeto e poder fazer um databinding no front end
         this.comoUsar = resposta.descricao;
       })
+    })
+
   }
 
 }
