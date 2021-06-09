@@ -22,7 +22,7 @@ export class OrdemCompraService{
         ({headers:headers})
         
         ).pipe(map((resposta: any)=>{
-            console.log(resposta)
+          return resposta.id
       }))
     }
 }

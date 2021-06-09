@@ -186,6 +186,47 @@
     }
   ],
   "pedidos": [
-
+    {
+      "endereco": "123333",
+      "numero": "123",
+      "complemento": "asd",
+      "formaPagamento": "debito",
+      "id": 1
+    },
+    {
+      "endereco": "aaaaaaaaa",
+      "numero": "12344",
+      "complemento": "aaaa",
+      "formaPagamento": "debito",
+      "id": 2
+    },
+    {
+      "endereco": "aa2sss",
+      "numero": "123",
+      "complemento": "cv",
+      "formaPagamento": "debito",
+      "id": 3
+    },
+    {
+      "endereco": "abddsc",
+      "numero": "12345",
+      "complemento": "cccc",
+      "formaPagamento": "dinheiro",
+      "id": 4
+    },
+    {
+      "endereco": "1234aaa",
+      "numero": "1234",
+      "complemento": "vvvv",
+      "formaPagamento": "dinheiro",
+      "id": 5
+    },
+    {
+      "endereco": "1233123",
+      "numero": "123213",
+      "complemento": "zzzzz",
+      "formaPagamento": "dinheiro",
+      "id": 6
+    }
   ]
 }

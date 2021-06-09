@@ -26,6 +26,12 @@ import { OfertaComponent } from './oferta/oferta.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
+import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
+
+
+
+//forms module - para controle de formularios
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,13 +45,16 @@ import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
     ComoUsarComponent,
     OndeFicaComponent,
     DescricaoReduzida,
-    OrdemCompraComponent
+    OrdemCompraComponent,
+    OrdemCompraSucessoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     //importando httpmodule
     HttpClientModule,
+    //importancao do formsmodule
+    FormsModule,
     //router com mapeamento global da aplicacao
     RouterModule.forRoot(ROUTES)
   ],

@@ -39,6 +39,9 @@ export class OrdemCompraComponent implements OnInit {
   //PEDIDO
   public pedido: Pedido = new Pedido('','','','')
   
+  //ID PEDIDO DA COMPRA
+  public idPedidoCompra!: number;
+  
   constructor(private ordemCompraService: OrdemCompraService) { }
 
   ngOnInit(): void {
@@ -97,7 +100,9 @@ export class OrdemCompraComponent implements OnInit {
     if(this.formaPagamento.length > 0){
       if(this.formaPagamento == "dinheiro"){
         this.pagamentoValido = true;
-      }else  {
+      }else if(this.formaPagamento == 'debito') {
+        this.pagamentoValido = true;
+      }else{
         this.pagamentoValido = false;
       }
     }
@@ -126,6 +131,8 @@ export class OrdemCompraComponent implements OnInit {
     this.pedido.formaPagamento = this.formaPagamento
     this.ordemCompraService.efetivarCompra(this.pedido)
       //assistindo o observable retornado pelo metodo
-      .subscribe()
+      .subscribe((idPedido: any)=> {
+        this.idPedidoCompra = idPedido;
+      })
   }
 }
